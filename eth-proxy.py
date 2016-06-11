@@ -31,8 +31,8 @@ from mining_libs import version
 def on_shutdown(f):
     '''Clean environment properly'''
     log.info("Shutting down proxy...")
-    if os.path.isfile('eth-proxy.pid'):
-        os.remove('eth-proxy.pid')
+    if os.path.isfile(os.path.join(os.path.dirname(__file__), '../', 'eth-proxy.pid')):
+        os.remove(os.path.join(os.path.dirname(__file__), '../', 'eth-proxy.pid'))
     f.is_reconnecting = False # Don't let stratum factory to reconnect again
 
 # Support main connection
@@ -166,7 +166,7 @@ def main():
     log.warning("-----------------------------------------------------------------------")
 
 if __name__ == '__main__':
-    fp = file("eth-proxy.pid", 'w')
+    fp = file(os.path.join(os.path.dirname(__file__), '../', 'eth-proxy.pid'), 'w')
     fp.write(str(os.getpid()))
     fp.close()
     main()
