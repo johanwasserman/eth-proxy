@@ -2,6 +2,7 @@
 This is example configuration for Stratum server.
 Please rename it to config.py and fill correct values.
 '''
+import os
 
 # ******************** GENERAL SETTINGS ***************
 
@@ -9,7 +10,7 @@ Please rename it to config.py and fill correct values.
 DEBUG = False
 
 # Destination for application logs, files rotated once per day.
-LOGDIR = 'log/'
+LOGDIR = os.path.join(os.path.dirname(__file__), '../log/')
 
 # Main application log file.
 LOGFILE = None
